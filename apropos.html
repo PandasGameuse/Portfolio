@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A propos de moi</title>
+</head>
+<body>
+    <h3>À propos de moi</h3>
+    <p>Je me présente, je m'appelle Coraly, et je me suis mise en tête de crée ce site afin de montrer ce que je suis capable d'apprendre et de faire.</p>
+    <p> Aujourd'hui nous somme le Jeudi 05 novembre 2026 lorsque je commence ce site, et donc mon apprentissage</p>
+</body>
+<head>
+    <meta charset="UTF-8">
+    <title> Compteur de jours </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 10px;
+        }
+        #compteur {
+            font-size: 2em;
+            color: #9820e7;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Compteur de jours</h1>
+<p id="compteur">Calcul en cours...</p>
+
+<script>
+    // Date de départ (année, mois-1, jour)
+    // Exemple : 2026-11-05
+    const dateDepart = new Date(2026, 10, 5); // mois = 10 pour novembre
+
+    function mettreAJourCompteur() {
+        const maintenant = new Date();
+        
+        // Calcul de la différence en millisecondes
+        const diffMs = maintenant - dateDepart;
+        
+        // Conversion en jours (1 jour = 24h * 60min * 60s * 1000ms)
+        const diffJours = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        
+        // Gestion des cas futur ou passé
+        let message;
+        if (diffJours >= 0) {
+            message = `${diffJours} jour(s) écoulé(s) depuis le premier jour`;
+        } else {
+            message = `${Math.abs(diffJours)} jour(s) restant(s) avant le ${dateDepart.toLocaleDateString()}`;
+        }
+        
+        document.getElementById("compteur").textContent = message;
+    }
+
+    // Mise à jour immédiate
+    mettreAJourCompteur();
+
+    // Optionnel : mise à jour automatique toutes les 24h
+    setInterval(mettreAJourCompteur, 1000 * 60 * 60 * 24);
+</script>
+</html>
